@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Annielisse ♥</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #d2b48c 0%, #ff8cbf 30%, #a06a94 80%, #1a0f1d 100%);
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        /* FILTRO AESTHETIC VINTAGE */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://www.transparenttextures.com/patterns/old-map.png'), url('https://www.transparenttextures.com/patterns/film-grain.png');
+            opacity: 0.14;
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        .aesthetic-filter {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            filter: blur(0.5px) sepia(0.15);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .dark-horizon {
+            position: absolute;
+            bottom: 0; left: 0; width: 100%; height: 45vh;
+            background: linear-gradient(to bottom, transparent 0%, #110913 75%);
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        /* SISTEMA DEL SOL */
+        .sun-system {
+            position: absolute;
+            top: 45%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 380px; height: 380px;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 1s ease;
+        }
+
+        .smooth-sun {
+            width: 180px; height: 180px;
+            background: radial-gradient(circle, #fff4cc 0%, #ff9ebb 65%, #e06a9d 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 80px rgba(224, 106, 157, 0.6);
+            z-index: 2;
+            animation: sunPulse 4s ease-in-out infinite alternate;
+        }
+
+        .sun-rays {
+            position: absolute;
+            width: 100%; height: 100%;
+            background: repeating-conic-gradient(from 0deg, rgba(255, 244, 204, 0.12) 0deg 15deg, transparent 15deg 30deg);
+            border-radius: 50%;
+            z-index: 1;
+            animation: raySpin 35s linear infinite;
+        }
+
+        @keyframes raySpin { 100% { transform: rotate(360deg); } }
+        @keyframes sunPulse {
+            0% { transform: scale(0.96); box-shadow: 0 0 70px rgba(224, 106, 157, 0.5); }
+            100% { transform: scale(1.04); box-shadow: 0 0 100px rgba(224, 106, 157, 0.7); }
+        }
+
+        /* NUBES */
+        .cute-cloud {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.35);
+            backdrop-filter: blur(3px);
+            border-radius: 50px;
+            z-index: 4;
+            transition: opacity 1s ease;
+        }
+        .cute-cloud::before, .cute-cloud::after { content: ""; position: absolute; background: rgba(255, 255, 255, 0.35); border-radius: 50%; }
+        .cloud-left { width: 180px; height: 50px; top: 8%; left: 6%; animation: floatSlight 7s ease-in-out infinite alternate; }
+        .cloud-left::before { width: 70px; height: 70px; top: -30px; left: 30px; }
+        .cloud-left::after { width: 90px; height: 90px; top: -45px; left: 70px; }
+        .cloud-right { width: 220px; height: 55px; top: 12%; right: 8%; animation: floatSlight 9s ease-in-out infinite alternate-reverse; }
+        .cloud-right::before { width: 80px; height: 80px; top: -35px; right: 40px; }
+        .cloud-right::after { width: 100px; height: 100px; top: -50px; right: 90px; }
+
+        @keyframes floatSlight { 0% { transform: translateY(0); } 100% { transform: translateY(8px); } }
+
+        .cyber-grid {
+            position: absolute;
+            bottom: 0; left: 0; width: 100%; height: 45%;
+            background-image: linear-gradient(rgba(160, 106, 148, 0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(160, 106, 148, 0.2) 1px, transparent 1px);
+            background-size: 50px 50px;
+            transform: perspective(200px) rotateX(65deg);
+            transform-origin: bottom;
+            animation: gridMove 3s linear infinite;
+            z-index: 2;
+            opacity: 0.7;
+            transition: opacity 1s ease;
+        }
+        @keyframes gridMove { 0% { background-position: 0 0; } 100% { background-position: 0 50px; } }
+
+        /* BOTÓN MÁGICO */
+        .dedication-tag {
+            position: absolute;
+            top: 40px; left: 50%;
+            transform: translateX(-50%);
+            color: #ffffff;
+            font-size: 13px;
+            letter-spacing: 3px;
+            z-index: 101;
+            background: rgba(26, 15, 29, 0.6);
+            padding: 12px 24px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 140, 191, 0.5);
+            backdrop-filter: blur(4px);
+            text-shadow: 0 0 5px rgba(255,255,255,0.5);
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .dedication-tag:hover {
+            background: rgba(255, 140, 191, 0.3);
+            box-shadow: 0 0 15px rgba(255, 140, 191, 0.6);
+            transform: translateX(-50%) scale(1.05);
+        }
+
+        #gardenCanvas {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        /* --- ESCENARIO DE SORPRESA ELEGANTE --- */
+        #surpriseScreen {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, #1a0508 0%, #000000 100%);
+            z-index: 90;
+            opacity: 0;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .rose-container {
+            position: relative;
+            width: 300px;
+            height: 400px;
+            margin-top: -30px;
+            z-index: 92;
+            filter: drop-shadow(0 0 15px rgba(220, 20, 60, 0.2));
+        }
+
+        .svg-rose {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+
+        .svg-rose path {
+            fill: transparent;
+            stroke: #ff9eaf;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-dasharray: 2000;
+            stroke-dashoffset: 2000;
+            transition: fill 2s ease-in-out;
+        }
+
+        .svg-rose.fill-active .petal { fill: #c90e2b; stroke: #52020e; transition-delay: 0.5s; }
+        .svg-rose.fill-active .leaf { fill: #194a2f; stroke: #0a1f14; transition-delay: 0.5s; }
+        .svg-rose.fill-active .stem { fill: #225c3c; stroke: #0a1f14; transition-delay: 0.5s; }
+
+        /* LETRERO DEL POEMA */
+        .love-text {
+            margin-top: 20px;
+            color: #fff0f3;
+            font-size: 22px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            font-family: 'Cinzel', 'Times New Roman', serif;
+            text-shadow: 0 0 20px rgba(255, 50, 100, 0.6);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 2s ease;
+            z-index: 95;
+            text-align: center;
+        }
+        .love-text.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* NUEVO MENSAJE DESDE ABAJO */
+        .second-text {
+            margin-top: 15px;
+            color: #ff9eaf;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            font-family: 'Courier New', Courier, monospace;
+            text-shadow: 0 0 10px rgba(255, 140, 191, 0.5);
+            opacity: 0;
+            transform: translateY(40px); /* Empieza más abajo */
+            transition: all 2s ease;
+            z-index: 95;
+            text-align: center;
+        }
+        .second-text.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="aesthetic-filter"></div>
+    <div class="dedication-tag" id="magicButton" onclick="startSurprise()">I love you Lissi ♥</div>
+
+    <div id="mainStage">
+        <div class="cute-cloud cloud-left"></div>
+        <div class="cute-cloud cloud-right"></div>
+        <div class="sun-system">
+            <div class="sun-rays"></div>
+            <div class="smooth-sun"></div>
+        </div>
+        <div class="cyber-grid"></div>
+        <div class="dark-horizon"></div>
+        <canvas id="gardenCanvas"></canvas>
+    </div>
+
+    <div id="surpriseScreen">
+        <div class="rose-container">
+            <svg class="svg-rose" id="elegantRose" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+                <path class="stem" d="M 100 180 C 105 220 90 260 95 300 C 100 300 102 295 102 260 C 112 220 105 190 100 180 Z"></path>
+                <path class="leaf" d="M 98 230 C 70 210 40 220 30 240 C 50 250 80 260 95 245 Z"></path>
+                <path class="leaf" d="M 102 245 C 130 225 160 215 170 230 C 150 250 120 265 102 255 Z"></path>
+                
+                <path class="petal" d="M 50 100 C 30 50 170 50 150 100 Z"></path>
+                <path class="petal" d="M 30 110 C 10 150 60 180 100 185 C 140 180 190 150 170 110 C 140 160 60 160 30 110 Z"></path>
+                <path class="petal" d="M 40 100 C 40 140 90 160 100 160 C 100 120 70 80 40 100 Z"></path>
+                <path class="petal" d="M 160 100 C 160 140 110 160 100 160 C 100 120 130 80 160 100 Z"></path>
+                <path class="petal" d="M 70 90 C 70 130 130 130 130 90 C 130 50 70 50 70 90 Z"></path>
+                <path class="petal" d="M 85 85 C 115 70 115 110 95 110 C 80 110 80 90 100 90"></path>
+            </svg>
+        </div>
+        <div id="loveMessage" class="love-text">No es flor, No es rosa.... Eres tu mi Niña Hermosa.</div>
+        <div id="secondMessage" class="second-text">Te quiero mucho Mi bonita</div>
+    </div>
+
+    <audio id="musicaFondo" src="loviu.mp3"></audio>
+
+    <script>
+        // --- JARDÍN PRINCIPAL ---
+        const canvas = document.getElementById('gardenCanvas');
+        const ctx = canvas.getContext('2d');
+        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resize); resize();
+
+        const flowers = []; const bees = []; const totalFlowers = 75;
+        const beeSpots = [{x: 0.15, y: 0.25}, {x: 0.32, y: 0.15}, {x: 0.78, y: 0.22}, {x: 0.88, y: 0.45}, {x: 0.22, y: 0.55}, {x: 0.65, y: 0.58}];
+
+        class VintageFlower {
+            constructor(x) {
+                this.baseX = x; this.baseY = canvas.height + 10;
+                this.size = Math.random() * 12 + 18; this.stemLength = Math.random() * 160 + 140;
+                this.angle = Math.random() * Math.PI; this.speed = Math.random() * 0.008 + 0.005;
+                this.type = Math.random() > 0.5 ? 'rose' : 'flat'; this.color = this.type === 'rose' ? '#a06a94' : '#ff758c';
+            }
+            update(time) { this.angle = Math.sin(time * this.speed + this.baseX * 0.03) * 0.06; }
+            draw() {
+                const tipX = this.baseX + Math.sin(this.angle) * this.stemLength;
+                const tipY = (canvas.height - this.stemLength) + (1 - Math.cos(this.angle)) * this.stemLength;
+                ctx.beginPath(); ctx.moveTo(this.baseX, this.baseY); ctx.quadraticCurveTo(this.baseX, tipY + this.stemLength/2, tipX, tipY);
+                ctx.strokeStyle = '#183c24'; ctx.lineWidth = 2; ctx.stroke();
+                ctx.save(); ctx.translate(tipX, tipY); ctx.shadowBlur = 12; ctx.shadowColor = this.color;
+                if (this.type === 'rose') {
+                    let layers = 4;
+                    for (let r = layers; r > 0; r--) {
+                        ctx.fillStyle = r % 2 === 0 ? this.color : '#ff8cbf';
+                        ctx.beginPath(); ctx.arc(0, 0, (this.size / layers) * r, 0, Math.PI * 2); ctx.fill();
+                    }
+                } else {
+                    const petals = 6;
+                    for (let i = 0; i < petals; i++) {
+                        ctx.rotate((Math.PI * 2) / petals); ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(-this.size/2, -this.size); ctx.lineTo(this.size/2, -this.size); ctx.closePath();
+                        ctx.fillStyle = this.color; ctx.fill();
+                    }
+                }
+                ctx.beginPath(); ctx.arc(0, 0, 4, 0, Math.PI * 2); ctx.fillStyle = '#1a0f1d'; ctx.fill(); ctx.restore();
+            }
+        }
+
+        class RealBee {
+            constructor(spot) { this.spot = spot; this.x = spot.x * canvas.width; this.y = spot.y * canvas.height; this.timeOffset = Math.random() * 100; }
+            update(time) {
+                this.x = (this.spot.x * canvas.width) + Math.sin(time * 0.04 + this.timeOffset) * 15;
+                this.y = (this.spot.y * canvas.height) + Math.cos(time * 0.03 + this.timeOffset) * 12;
+            }
+            draw() {
+                ctx.save(); ctx.translate(this.x, this.y); ctx.fillStyle = 'rgba(230, 240, 255, 0.75)';
+                const wingFlap = Math.sin(Date.now() * 0.06 + this.timeOffset) * 4;
+                ctx.save(); ctx.translate(-2, -6); ctx.beginPath(); ctx.ellipse(0, 0, 4, 10 + wingFlap, -Math.PI/6, 0, Math.PI*2); ctx.fill(); ctx.restore();
+                ctx.save(); ctx.translate(3, -6); ctx.beginPath(); ctx.ellipse(0, 0, 4, 10 + wingFlap, Math.PI/6, 0, Math.PI*2); ctx.fill(); ctx.restore();
+                let gradient = ctx.createLinearGradient(-12, 0, 12, 0);
+                gradient.addColorStop(0, '#1a0f1d'); gradient.addColorStop(0.2, '#ffcc00'); gradient.addColorStop(0.4, '#1a0f1d');
+                gradient.addColorStop(0.6, '#ffcc00'); gradient.addColorStop(0.8, '#1a0f1d'); gradient.addColorStop(1, '#ffcc00');
+                ctx.fillStyle = gradient; ctx.beginPath(); ctx.ellipse(0, 0, 14, 9, 0, 0, Math.PI * 2); ctx.fill(); ctx.restore();
+            }
+        }
+
+        for (let i = 0; i < totalFlowers; i++) { flowers.push(new VintageFlower((i * (canvas.width / totalFlowers)) + Math.random() * 10)); }
+        beeSpots.forEach(spot => { bees.push(new RealBee(spot)); });
+
+        let mainActive = true;
+        function loop() {
+            if (!mainActive) return;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const time = Date.now() * 0.05;
+            bees.forEach(b => { b.update(time); b.draw(); });
+            flowers.forEach(f => { f.update(time); f.draw(); });
+            requestAnimationFrame(loop);
+        }
+        loop();
+
+        // --- ANIMACIÓN DE LA ROSA Y LA MÚSICA ---
+        function startSurprise() {
+            // Reproducir la canción al tocar el botón
+            document.getElementById('musicaFondo').play();
+
+            mainActive = false;
+            document.getElementById('mainStage').style.opacity = '0';
+            
+            const sScreen = document.getElementById('surpriseScreen');
+            sScreen.style.opacity = '1';
+            sScreen.style.pointerEvents = 'auto';
+
+            setTimeout(() => {
+                animateSVGRose();
+            }, 800);
+        }
+
+        function animateSVGRose() {
+            const paths = document.querySelectorAll('.svg-rose path');
+            
+            paths.forEach((path, index) => {
+                const length = path.getTotalLength();
+                path.style.strokeDasharray = length;
+                path.style.strokeDashoffset = length;
+                
+                path.animate([
+                    { strokeDashoffset: length },
+                    { strokeDashoffset: 0 }
+                ], {
+                    duration: 3500, 
+                    easing: 'ease-in-out',
+                    fill: 'forwards',
+                    delay: index * 200 
+                });
+            });
+
+            setTimeout(() => {
+                document.getElementById('elegantRose').classList.add('fill-active');
+                
+                // Muestra el primer texto (el poema)
+                setTimeout(() => {
+                    document.getElementById('loveMessage').classList.add('show');
+                    
+                    // Muestra el texto de "Te quiero mucho" un poco después, subiendo desde abajo
+                    setTimeout(() => {
+                        document.getElementById('secondMessage').classList.add('show');
+                    }, 1500);
+
+                }, 1000);
+                
+            }, paths.length * 200 + 3000);
+        }
+    </script>
+</body>
+</html>
